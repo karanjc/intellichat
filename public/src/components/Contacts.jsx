@@ -33,16 +33,11 @@ export default function Contacts({ contacts, changeChat }) {
           {filteredContacts.map((contact, index) => (
             <div
               key={contact._id}
-              className={`contact ${
-                index === currentSelected ? "selected" : ""
-              }`}
+              className={`contact ${index === currentSelected ? "selected" : ""}`}
               onClick={() => changeCurrentChat(index, contact)}
             >
               <div className="avatar">
-                <img
-                  src={`data:image/svg+xml;base64,${contact.avatarImage}`}
-                  alt=""
-                />
+                <img src={`data:image/svg+xml;base64,${contact.avatarImage}`} alt="" />
               </div>
               <div className="username">
                 <h3>{contact.username}</h3>
@@ -59,13 +54,17 @@ const Container = styled.div`
   display: grid;
   grid-template-rows: auto auto;
   overflow: hidden;
-  background-color: #080420;
+  background-color: #f5f5f5;
+  border-radius: 1rem;
+  padding: 1rem;
 
   .search-bar {
     width: 100%;
-    height: 2rem; /* Set a fixed height for the search bar */
+    height: 2rem;
     padding: 0.5rem;
-    border: 1px solid #ccc;
+    border: none;
+    background-color: #e8e8e8;
+    color: #000;
     border-radius: 4px;
     font-size: 1rem;
     margin-bottom: 0.5rem;
@@ -81,20 +80,21 @@ const Container = styled.div`
     align-items: center;
     overflow: auto;
     gap: 0.8rem;
+    padding-right: 1rem;
     &::-webkit-scrollbar {
       width: 0.2rem;
-      &-thumb {
-        background-color: #ffffff39;
-        width: 0.1rem;
-        border-radius: 1rem;
-      }
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: #D3D3D3; 
+      width: 0.1rem;
+      border-radius: 1rem;
     }
     .contact {
-      background-color: #ffffff34;
+      background-color: #fff;
       min-height: 4rem;
       cursor: pointer;
-      width: 80%;
-      border-radius: 0.2rem;
+      width: 100%;
+      border-radius: 0.5rem;
       padding: 0.7rem;
       padding-top: 0.1rem;
       display: flex;
@@ -108,12 +108,12 @@ const Container = styled.div`
       }
       .username {
         h3 {
-          color: white;
+          color: #000;
         }
       }
     }
     .selected {
-      background-color: #9a86f3;
+      background-color: #4caf50;
       height: 3rem;
     }
   }

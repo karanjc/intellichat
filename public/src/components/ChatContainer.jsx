@@ -1,17 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import ChatInput from "./ChatInput";
-import Logout from "./Logout";
 import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
 import { sendMessageRoute, recieveMessageRoute } from "../utils/APIRoutes";
-
 
 export default function ChatContainer({ currentChat, socket }) {
   const [messages, setMessages] = useState([]);
   const scrollRef = useRef();
   const [arrivalMessage, setArrivalMessage] = useState(null);
-  
 
   useEffect(async () => {
     const data = await JSON.parse(
@@ -81,11 +78,15 @@ export default function ChatContainer({ currentChat, socket }) {
               alt=""
             />
           </div>
-          <div className="username">
-            <h3>{currentChat.username}</h3>
+          <div className="name-section">
+            <h3 style={{ color: "white" }}>{currentChat.username}</h3>
+            <div className="call-buttons">
+              {/* WhatsApp-style video call and call icons */}
+              <span className="video-call">&#128249;</span>
+              <span className="call">&#9990;</span>
+            </div>
           </div>
         </div>
-        <Logout />
       </div>
       <div className="chat-messages">
         {messages.map((message) => (
@@ -119,17 +120,32 @@ const Container = styled.div`
     justify-content: space-between;
     align-items: center;
     padding: 0 1rem;
+    border-bottom: 1px solid white;
     .user-details {
       display: flex;
       align-items: center;
+      justify-content: space-between; // Align user details and call buttons to each end
       gap: 1rem;
       .avatar {
         img {
           height: 2.5rem;
-          padding-left: 18rem;
+          padding-left: 1rem; // Adjust padding-left as needed
         }
       }
-      .username {
+      .name-section {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        .call-buttons {
+          display: flex;
+          gap: 0.5rem;
+          .video-call,
+          .call {
+            font-size: 1.5rem;
+            color: white;
+            cursor: pointer;
+          }
+        }
         h3 {
           color: white;
           align-items: center;
@@ -160,7 +176,7 @@ const Container = styled.div`
         padding: 1rem;
         font-size: 1.1rem;
         border-radius: 1rem;
-        color: #d1d1d1;
+        color: #454545;
         background-color: #e2e2e2; // Default background color
         @media screen and (min-width: 720px) and (max-width: 1080px) {
           max-width: 70%;

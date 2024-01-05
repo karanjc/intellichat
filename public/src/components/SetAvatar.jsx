@@ -23,7 +23,7 @@ import { useNavigate } from "react-router-dom";
 // An API route utility, defining the route for setting avatars.
 import { setAvatarRoute } from "../utils/APIRoutes";
 export default function SetAvatar() {
-  const api = `https://api.multiavatar.com/4645647=`;
+  const api = `https://api.dicebear.com/7.x/avataaars/svg?seed=Patches`;
   const navigate = useNavigate();
   const [avatars, setAvatars] = useState([]);
   const [isLoading, setIsLoading] = useState(true);

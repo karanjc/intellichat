@@ -158,9 +158,10 @@ const Container = styled.div`
   gap: 1rem;
   align-items: center;
   background-color: #aa336a;
+  padding-top: 2.7rem; /* Adjust padding-top to prevent overlap with the navbar */
   .container {
-    height: 85vh;
-    width: 85vw;
+    height: 100%;
+    width: 100%;
     background-color: #00000076;
     display: grid;
     grid-template-columns: 25% 75%;
@@ -169,4 +170,3 @@ const Container = styled.div`
     }
   }
 `;
-
